@@ -87,7 +87,7 @@ close_btn.addEventListener('click',() => {
 plus_btns.forEach((plus_btn) => {
     let img = plus_btn.parentElement.parentElement.previousElementSibling.firstElementChild;
     let img_src = img.src;
-    let label = plus_btn.parentElement.previousElementSibling.textContent;
+    let label = plus_btn.parentElement.previousElementSibling.previousElementSibling.textContent;
     plus_btn.addEventListener('click',() => {
         let new_div = document.createElement('div');
         new_div.innerHTML = `<div class="added">
@@ -129,5 +129,21 @@ window.addEventListener('scroll',() => {
         nav.classList.remove(`nav-fixed`);
     }
 });
+//deal with nav when on phone or devices with smaller screens.
+let link_container = document.querySelector('.link-container');
+let toggle_btn = document.querySelector('.toggle-btn');
+let list = document.querySelector('.links');
 
+//add event listener to the toggle btn
+toggle_btn.addEventListener('click',() => {
+    let links_cont_h = link_container.getBoundingClientRect().height;
+    let list_h = list.getBoundingClientRect().height;
+    let nav_h = nav.getBoundingClientRect().height;
+    if (links_cont_h === 0) {
+        link_container.style.height = `${nav_h+list_h}px`;
+    }
+    else {
+        link_container.style.height = `0px`;
+    }
+});
 
