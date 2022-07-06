@@ -201,7 +201,7 @@ dialog::backdrop{
     width: 10px;
     background: red;
     display: inline-block;
-    /* position: absolute; */
+    position: absolute; 
     transition: all 0.5s linear;
     font-size: 10px;
     color: white;
@@ -230,4 +230,15 @@ h4 {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.modal {
+    border-radius: 2px;
+    border: var(--clr-mrpurple) solid 0.07rem ;
+}
+.modal-label {
+    display: block;
+    padding: 0.5rem 1.3rem;
+}
+.btns-container {
+    padding: 0.5rem 1.3rem;
 }

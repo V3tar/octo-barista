@@ -25,7 +25,7 @@ slides.forEach((slide,index) => {
 let counter = 0;
 //function to add counter
 let addCounter = () => {
-    counter++;
+    counter--;
     courasel();
 }
 prevBtn.addEventListener('click',addCounter);
@@ -92,13 +92,28 @@ plus_btns.forEach((plus_btn) => {
         let new_div = document.createElement('div');
         new_div.innerHTML = `<div class="added">
         <img src="${img_src}" alt="">
-        <label for="item">${label}</label>
+        <label class='modal-label' for="item">${label}</label>
         <div class="btns-container">
-            <button><i class="fa-solid fa-minus"></i></button>
+            <button class='btn remove-item'><i class="fa-solid fa-minus"></i></button>
             <span>0</span>
-            <button><i class="fa-solid fa-plus"></i></button>
+            <button class='btn add-item'><i class="fa-solid fa-plus"></i></button>
         </div>`
         modal.appendChild(new_div);
+        // add event listeners to buttons inside the cart;
+        let count_drinks =0 ;
+        let modal_btns = new_div.querySelectorAll('.btns-container > button');
+        modal_btns.forEach((modal_btn) => {
+            modal_btn.addEventListener('click',() => {
+                let drinks_count = new_div.querySelector('.btns-container > span');
+                if (modal_btn.classList.contains('add-item')) {
+                    count_drinks++;
+                }
+                else {
+                    count_drinks--;
+                }
+                drinks_count.textContent = count_drinks;
+            })
+        });
         //add count to the red dot on the cart
         count++;
         cart_count.textContent = count;
@@ -146,4 +161,5 @@ toggle_btn.addEventListener('click',() => {
         link_container.style.height = `0px`;
     }
 });
+
 
